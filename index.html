@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="A simple library catalog for managing books and their availability."
+    />
+    <title>Library Catalog</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-content">
+        <a class="brand" href="#" aria-label="Library Catalog home">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <span>Library Catalog</span>
+        </a>
+        <p class="header-note">A simple way to keep your collection in order.</p>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR COLLECTION</p>
+        <h1 id="page-title">Books</h1>
+        <p class="intro-copy">Keep track of what you have and what is available.</p>
+      </section>
+
+      <section class="panel" aria-labelledby="add-book-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">CATALOG</p>
+            <h2 id="add-book-title">Add a book</h2>
+          </div>
+        </div>
+        <form id="book-form" class="book-form">
+          <label>
+            <span>Book title</span>
+            <input
+              id="book-title"
+              name="title"
+              type="text"
+              autocomplete="off"
+              maxlength="120"
+              placeholder="e.g. The Left Hand of Darkness"
+              required
+            />
+          </label>
+          <label>
+            <span>Author</span>
+            <input
+              id="book-author"
+              name="author"
+              type="text"
+              autocomplete="off"
+              maxlength="100"
+              placeholder="e.g. Ursula K. Le Guin"
+              required
+            />
+          </label>
+          <label>
+            <span>ISBN <span class="optional">(optional)</span></span>
+            <input
+              id="book-isbn"
+              name="isbn"
+              type="text"
+              inputmode="numeric"
+              autocomplete="off"
+              maxlength="17"
+              placeholder="e.g. 9780441478125"
+            />
+          </label>
+          <button class="button button-primary add-button" type="submit">
+            Add book
+          </button>
+        </form>
+        <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="catalog-section" aria-labelledby="catalog-title">
+        <div class="catalog-heading">
+          <div>
+            <p class="eyebrow">COLLECTION</p>
+            <h2 id="catalog-title">Your books <span id="book-count" class="count"></span></h2>
+          </div>
+          <label class="search-field">
+            <span class="visually-hidden">Search books</span>
+            <svg aria-hidden="true" viewBox="0 0 20 20" focusable="false">
+              <circle cx="8.5" cy="8.5" r="5.75"></circle>
+              <path d="m13 13 4 4"></path>
+            </svg>
+            <input
+              id="book-search"
+              type="search"
+              placeholder="Search by title or author"
+              autocomplete="off"
+            />
+          </label>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Author</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Status</th>
+                <th scope="col"><span class="visually-hidden">Actions</span></th>
+              </tr>
+            </thead>
+            <tbody id="book-list"></tbody>
+          </table>
+          <div id="empty-state" class="empty-state" hidden>
+            <span class="empty-icon" aria-hidden="true">+</span>
+            <h3>No books found</h3>
+            <p>Add a book to start your catalog, or try a different search.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer">Your catalog is saved in this browser.</footer>
+  </body>
+</html>
